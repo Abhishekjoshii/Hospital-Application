@@ -5,7 +5,7 @@ metadata:
 spec:
    replicas: 1
    selector:
-     matchlabels:
+     matchLabels:
        app: hospital
    template:
      metadata:
@@ -15,11 +15,11 @@ spec:
        containers:
        - name: hospital
 
-       image: abhishekjoshhi/hospital-app:v1.0.0
-       ports:
-       - containerPort: 5000
-       envFrom:
-       - configMapRef:
-           name: hospital-config 
-       - secretRef:
-           name: hospital-secret 
+         image: abhishekjoshhi/hospital-app:v1.0.0
+         ports:
+         - containerPort: 5000
+         envFrom:
+         - configMapRef:
+             name: hospital-config 
+         - secretRef:
+             name: hospital-secret 
