@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hospital-app
+spec:
+   replicas: 2
+   selector:
+      matchlabels:
+        app: hospital
+   template:
+     metadata:
+       labels:
+         app: hospital 
+     spec:
+       containers:
+       - name: hospital
+
+       image:
+       ports:
+       - containerPort: 5000
+       envFrom:
+       - configMapRef:
+           name: hospital-config 
+       - secretRef:
+           name: hospital-secret 
