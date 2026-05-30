@@ -5,8 +5,8 @@ metadata:
 spec:
    replicas: 1
    selector:
-      matchlabels:
-        app: hospital
+     matchlabels:
+       app: hospital
    template:
      metadata:
        labels:

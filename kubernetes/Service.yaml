@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: hospital 
-  port:
+  ports:
   - port: 80
     targetPort: 5000
   type: LoadBalancer

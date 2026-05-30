@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: mongodb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
-    matchlabels:
+    matchLabels:
       app: mongodb
   template:
     metadata:
@@ -25,4 +25,4 @@ spec:
       volumes:
         - name: mongodb-storage 
           persistentVolumeClaim:
-            ClaimName: mongodb-pvc
+            claimName: mongodb-pvc
