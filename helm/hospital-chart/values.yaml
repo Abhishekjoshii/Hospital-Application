@@ -1,0 +1,34 @@
+replicasCount: 1
+image: 
+  repository: abhishekjoshhi/hospital-app 
+  tag:v1.0.0 
+container:
+  name: hospital
+  port: 5000
+services:
+  name: hospital-service 
+  type: LoadBalancer
+  port: 80 
+  targetPort: 5000
+configMap:
+  name: hospital-config 
+  data:
+    MONGO_URI: mongodb://mongodb:27017/hospital_management
+    PORT: "5000"
+    MODE_ENV: production
+    ADMIN_USERNAME: admin
+secret:
+  name: hospital-secret-key
+  type: Opaque 
+  data:
+    SESSION_SECRET: hospital-secret-key
+    JWT_SECRET: hospital-jwt-secret 
+    ADMIN_PASSWORD: admin123
+mongodb:
+  name: mongodb
+  image: mongo
+  tag: "7"
+  port: 27017 
+persistance:
+  pvcName: mongo-pvc 
+  size: 2Gi

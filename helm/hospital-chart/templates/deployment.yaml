@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-app
+spec:
+   replicas: {{ .Values.replicaCount}}
+   selector:
+      matchlabels:
+        app: hospital
+   template:
+     metadata:
+       labels:
+         app: hospital 
+     spec:
+       containers:
+       - name: {{ .Values.container.name }}
+
+       image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+       ports:
+       - containerPort: {{ .Values.container.port }}
+       envFrom:
+       - configMapRef:
+           name: {{ .Values.configMap.name }}
+       - secretRef:
+           name: {{ .Values.secret.name }} 
